@@ -125,3 +125,19 @@ window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
+// Xử lý xoay trên điện thoại bằng touch
+let touchStartX = 0;
+
+canvas.addEventListener('touchstart', (e) => {
+  if (e.touches.length === 1) {
+    touchStartX = e.touches[0].clientX;
+  }
+});
+
+canvas.addEventListener('touchmove', (e) => {
+  if (e.touches.length === 1) {
+    let dx = e.touches[0].clientX - touchStartX;
+    angleY += dx * 0.005;
+    touchStartX = e.touches[0].clientX;
+  }
+});
