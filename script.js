@@ -1,6 +1,7 @@
 
 const canvas = document.getElementById('heartCanvas');
 const ctx = canvas.getContext('2d');
+const isMobile = window.innerWidth < 768;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -23,7 +24,8 @@ class Word {
     this.y = Math.random() * 800 - 400;
     this.z = Math.random() * 800 + 200;
     this.size = Math.random() * 30 + 20;
-    this.speed = Math.random() * 1.5 + 0.5;
+    this.speed = (Math.random() * 1.5 + 0.5) * (isMobile ? 2 : 1);
+
   }
   update() {
     this.z -= this.speed;
@@ -62,7 +64,8 @@ class ImageParticle {
     this.y = Math.random() * 800 - 400;
     this.z = Math.random() * 800 + 200;
     this.size = Math.random() * 40 + 20;
-    this.speed = Math.random() * 1.5 + 0.5;
+    this.speed = (Math.random() * 1.5 + 0.5) * (isMobile ? 2 : 1);
+
   }
   update() {
     this.z -= this.speed;
